@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import RegisterForm from './components/RegisterForm';
 
-class App extends Component {
+
+class RegisterFormContainer extends Component {
+  onSubmit = values => {
+    console.log('values', values);
+  };
+
+  getInitialValues = () => {
+    return {
+      name: 'first name',
+      preference: 'spaces',
+      newsletter: true,
+    }
+  };
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <RegisterForm onSubmit={this.onSubmit}
+        initialValues={this.getInitialValues()}
+      />
     );
   }
 }
 
-export default App;
+export default RegisterFormContainer;
